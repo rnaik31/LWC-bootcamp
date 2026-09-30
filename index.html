@@ -6,7 +6,15 @@
     <title>Web to Lead Form</title>
     <script src="https://www.google.com/recaptcha/api.js"></script>
 <script>
- function timestamp() { var response = document.getElementById("g-recaptcha-response"); if (response == null || response.value.trim() == "") {var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);elems["ts"] = JSON.stringify(new Date().getTime());document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); } } setInterval(timestamp, 500); 
+ function timestamp() { 
+ var response = document.getElementById("g-recaptcha-response");
+  if (response == null || response.value.trim() == "") {
+  var elems = JSON.parse(document.getElementsByName("captcha_settings")[0].value);
+  elems["ts"] = JSON.stringify(new Date().getTime());
+  document.getElementsByName("captcha_settings")[0].value = JSON.stringify(elems); 
+  } 
+  } 
+  setInterval(timestamp, 500); 
 </script>
 </head>
 <link rel="stylesheet" href="style.css"></link>
@@ -14,7 +22,7 @@
     <h1>Web to Lead Form</h1>
 <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00Dg5000009zD3B" method="POST"
  onsubmit="beforeSubmit(event)">
-
+<input type=hidden name='captcha_settings' value='{"keyname":"WebToLead","fallback":"true","orgId":"00Dg5000009zD3B","ts":""}'>
 <input type=hidden name="oid" value="00Dg5000009zD3B">
 <input type=hidden name="retURL" value="https://rnaik31.github.io/LWC-bootcamp/thank-you.html">
 <input  id="00Ng500000Tz4h9" name="00Ng500000Tz4h9" type="hidden" class="outputdate"/>
@@ -29,7 +37,7 @@
 <label>Lead Date:</label>
 <input type="date" required="true" class="inputdate"/>
 <input type="hidden"  id="lead_source" name="lead_source" value="Web" /><br>
-
+<div class="g-recaptcha" data-sitekey="6LfQQtctAAAAACxFzCbcjKn-Xrt0HZK_6622lmSo"></div><br>
 <input type="submit" name="submit">
 
 </form>
